@@ -2,8 +2,4 @@
 
 source 'https://rubygems.org'
 
-group :development, :test do
-  gem 'pry', require: true
-  gem 'rubocop'
-  gem 'rspec'
-end
+gemspec
