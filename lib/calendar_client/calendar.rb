@@ -18,14 +18,14 @@ module CalendarClient
     attr_reader :meetings
 
     def initialize(meetings:)
-      @meetings = meetings
+      @meetings = meeting_initializer(meetings)
     end
 
     def call
       meetings_output
     end
 
-    def meeting_initializer
+    def meeting_initializer(meetings)
       meetings.map do |meeting|
         meeting[:start_time] = start_time
         CalendarClient::Meeting.new(meeting)
@@ -73,15 +73,15 @@ module CalendarClient
     end
 
     def ordered_meetings
-      meeting_initializer.sort_by(&:type).reverse
+      meetings.sort_by(&:type).reverse
     end
 
     def offsite_meetings
-      meeting_initializer.select { |meeting| meeting.type == :offsite }
+      meetings.select { |meeting| meeting.type == :offsite }
     end
 
     def onsite_meetings
-      meeting_initializer.select { |meeting| meeting.type == :onsite }
+      meetings.select { |meeting| meeting.type == :onsite }
     end
 
     def valid_meeting_duration?
