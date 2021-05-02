@@ -3,7 +3,7 @@
 require 'time'
 require_relative '../../../lib/calendar_client/meeting'
 
-describe CalendarClient::Meeting do
+describe CalendarClient::Meeting do # rubocop:disable Metrics/BlockLength
   let(:start_time) { Time.parse('09:00') }
 
   let(:onsite_meeting) do
@@ -17,7 +17,6 @@ describe CalendarClient::Meeting do
   subject { described_class.new(onsite_meeting) }
 
   describe '#initialize' do
-
     it 'with right arguments' do
       expect(subject.name).to eql onsite_meeting[:name]
       expect(subject.duration).to eql onsite_meeting[:duration]
@@ -76,4 +75,3 @@ describe CalendarClient::Meeting do
     end
   end
 end
-

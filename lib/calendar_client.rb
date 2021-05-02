@@ -3,14 +3,13 @@
 require 'yaml'
 require 'pry'
 
+# Returns output of a set of meetings
 module CalendarClient
   MEETINGS_FILE = YAML.load(File.read('config/meetings.yml'), symbolize_names: true)
 
-  attr_reader :day_1
-
   def self.execute
-    # you can switch :day_1 for :day_2, :day_3 or :day_4
-    CalendarClient::Calendar.new(meetings: MEETINGS_FILE.first[:day_1]).call
+    # you can switch :day1 for :day2, :day3 or :day4
+    CalendarClient::Calendar.new(meetings: MEETINGS_FILE.first[:day1]).call
   end
 
   require_relative 'calendar_client/meeting'

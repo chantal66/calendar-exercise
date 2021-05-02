@@ -1,4 +1,4 @@
-- day_1:
+- day1:
   -
     name: 'Meeting 1'
     duration: 3
@@ -16,7 +16,7 @@
     duration: 0.5
     type: :onsite
 
-- day_2:
+- day2:
   -
     name: 'Meeting 1'
     duration: 1.5
@@ -38,7 +38,7 @@
     duration: 1
     type: :offsite
 
-- day_3:
+- day3:
   -
     name: 'Meeting 1'
     duration: 4
@@ -48,7 +48,7 @@
     duration: 4
     type: :offsite
 
-- day_4:
+- day4:
   -
     name: 'Meeting 1'
     duration: 0.5

@@ -3,8 +3,7 @@
 require 'time'
 require_relative '../../../lib/calendar_client/calendar'
 
-describe CalendarClient::Calendar do
-
+describe CalendarClient::Calendar do # rubocop:disable Metrics/BlockLength
   let(:start_time) { Time.parse('09:00') }
 
   let(:onsite_meetings) do
@@ -48,10 +47,10 @@ describe CalendarClient::Calendar do
     context 'when meetings fit office hours' do
       it 'returns a meeting schedule' do
         expect(subject.call).to be_an Array
-        expect(subject.call).to eq(["09:00 - 09:30 - Meeting 4",
-                                    "09:30 - 12:30 - Meeting 1",
-                                    "12:30 - 13:30 - Meeting 3",
-                                    "14:00 - 16:00 - Meeting 2"])
+        expect(subject.call).to eq(['09:00 - 09:30 - Meeting 4',
+                                    '09:30 - 12:30 - Meeting 1',
+                                    '12:30 - 13:30 - Meeting 3',
+                                    '14:00 - 16:00 - Meeting 2'])
       end
     end
 
@@ -99,7 +98,7 @@ describe CalendarClient::Calendar do
     context 'when meetings have wrong durations' do
       subject { described_class.new(meetings: non_fitting_meetings) }
 
-      it 'returns true' do
+      it 'returns false' do
         expect(subject.valid_meeting_duration?).to eq(false)
       end
     end
