@@ -14,6 +14,9 @@ describe CalendarClient::Meeting do # rubocop:disable Metrics/BlockLength
     { name: 'Meeting 2', duration: 2, type: :offsite, start_time: start_time }
   end
 
+  let(:bad_params) { { name: 'Meeting 2', duration: '2', type: :offsite, start_time: start_time } }
+
+
   subject { described_class.new(onsite_meeting) }
 
   describe '#initialize' do
@@ -26,6 +29,18 @@ describe CalendarClient::Meeting do # rubocop:disable Metrics/BlockLength
 
     it 'returns the end_time of the meeting' do
       expect(subject.end_time).to eql(start_time + (onsite_meeting[:duration] * 3600))
+    end
+  end
+
+  describe '#valid?' do
+    context 'with correct params' do
+      it 'returns true' do
+        expect(subject.valid?(onsite_meeting)).to eq(true)
+      end
+    end
+
+    context 'with incorrect params' do
+      it { expect{described_class.new(bad_params)}.to raise_error(StandardError) }
     end
   end
 

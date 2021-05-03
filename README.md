@@ -10,6 +10,10 @@ For this feature there will be two kinds of meetings, on-site meetings and off-s
 ```
 
 ```bash
+ $ cd calendar-exercise 
+```
+
+```bash
  $ bundle install
 ```
 
@@ -23,7 +27,10 @@ For this feature there will be two kinds of meetings, on-site meetings and off-s
 CalendarClient.execute
 ```
 
-> To see different outputs, In `calendar_client.rb` you can switch `:day1` for `:day2, :day3 or :day4` 
+> To see different outputs, In `calendar_client.rb` you can switch `MEETINGS_FILE.first[:day1]` for: 
+> `MEETINGS_FILE[1][:day2]`
+> `MEETINGS_FILE[2][:day3]`
+> `MEETINGS_FILE[3][:day4]`
 
 ## Run the Test Suite
 

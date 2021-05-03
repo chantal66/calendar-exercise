@@ -11,6 +11,8 @@ module CalendarClient
     attr_accessor :start_time
 
     def initialize(params = {})
+      raise StandardError unless valid?(params)
+
       @name = params[:name]
       @duration = params[:duration]
       @type = params[:type]
@@ -38,6 +40,16 @@ module CalendarClient
 
     def next_meeting_starts
       end_time + duration_in_seconds(buffer)
+    end
+
+    def valid?(params)
+      return false unless params.is_a?(Hash)
+      return false unless params[:name].is_a? String
+      return false unless (params[:duration].is_a?(Integer) || params[:duration].is_a?(Float))
+      return false unless params[:type].is_a? Symbol
+      return false unless [:onsite, :offsite].include?(params[:type])
+
+      true
     end
   end
 end

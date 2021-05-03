@@ -8,7 +8,6 @@ module CalendarClient
   MEETINGS_FILE = YAML.load(File.read('config/meetings.yml'), symbolize_names: true)
 
   def self.execute
-    # you can switch :day1 for :day2, :day3 or :day4
     CalendarClient::Calendar.new(meetings: MEETINGS_FILE.first[:day1]).call
   end
 
