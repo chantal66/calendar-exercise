@@ -43,7 +43,7 @@ module CalendarClient
     end
 
     def valid?(params)
-      return false unless params.is_a?(Hash)
+      return false unless params.is_a? Hash
       return false unless params[:name].is_a? String
       return false unless (params[:duration].is_a?(Integer) || params[:duration].is_a?(Float))
       return false unless params[:type].is_a? Symbol
